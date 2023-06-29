@@ -1,10 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       backgroundImage: {
@@ -14,5 +12,29 @@ module.exports = {
       },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.no-scroll-bar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+        '.no-select': {
+          '-webkit-touch-callout': 'none',
+          '-webkit-user-select': 'none',
+          '-khtml-user-select': 'none',
+          '-moz-user-select': 'none',
+          '-ms-user-select': 'none',
+          'user-select': 'none',
+        },
+      };
+
+      addUtilities(newUtilities);
+    }),
+  ],
+};
