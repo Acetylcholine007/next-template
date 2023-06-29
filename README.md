@@ -7,6 +7,7 @@
 💪 Opinionated React/NextJS structuring and workflow  
 🍃 Tailwind and Framer Motion for styling and animation  
 🐞 ESLint, Prettier, Git Hooks, Snippets, Testing and Debugger configuration included  
+🌎 Internationalization added  
 🐋 Dockerized codebase
 
 ## Getting Started
